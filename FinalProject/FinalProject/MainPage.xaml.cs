@@ -26,5 +26,20 @@ namespace FinalProject
         {
             this.InitializeComponent();
         }
+
+        private void Image_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void InfoImage_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void SettingImage_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }
