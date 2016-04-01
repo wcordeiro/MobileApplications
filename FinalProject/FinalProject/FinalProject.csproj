@@ -92,16 +92,30 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="curl\cacert.pem" />
+    <None Include="curl\certificado.crt" />
+    <None Include="curl\CHANGES" />
+    <None Include="curl\COPYING" />
+    <None Include="curl\curl.pdf" />
+    <None Include="curl\README" />
+    <None Include="curl\RELEASE-NOTES" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bussiness\Responsef2f.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Recipef2f.cs" />
+    <Compile Include="Model\Responsef2f.cs" />
+    <Compile Include="Model\ResponseRecipef2f.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowRecipies.xaml.cs">
+      <DependentUpon>ShowRecipies.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -110,6 +124,13 @@
     <None Include="FinalProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="curl\build.txt" />
+    <Content Include="curl\curl.exe" />
+    <Content Include="curl\curl.html" />
+    <Content Include="curl\libcurl.dll" />
+    <Content Include="curl\libeay32.dll" />
+    <Content Include="curl\mk-ca-bundle.vbs" />
+    <Content Include="curl\ssleay32.dll" />
     <Content Include="Images\info.png" />
     <Content Include="Images\powered.png" />
     <Content Include="Images\settings.png" />
@@ -130,6 +151,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ShowRecipies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

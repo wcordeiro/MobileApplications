@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using FinalProject.Bussiness;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,11 +28,6 @@ namespace FinalProject
             this.InitializeComponent();
         }
 
-        private void Image_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
         private void InfoImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
@@ -40,6 +36,23 @@ namespace FinalProject
         private void SettingImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
+        }
+
+        private void Ingredientstxtblck_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void Moretxtblck_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private async void Recipiestxtblck_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Responsef2f response = new Responsef2f();
+            String responseString = await response.getData();
+            Frame.Navigate(typeof(ShowRecipies),responseString);
         }
     }
 }
