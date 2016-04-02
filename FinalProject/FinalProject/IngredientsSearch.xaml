@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="FinalProject.IngredientsSearch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="0">
+            <TextBlock Text="Search by Ingredients" FontSize="30"/>
+        </StackPanel>
+        
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+            <StackPanel x:Name="IngredientsPanel" Grid.Row="1" AllowDrop="True">
+                <Grid x:Name="IngredientsGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ingredients :" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox x:Name="Ingredient0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0"/>
+                    <Image x:Name="addImage" Source="Images/add.jpg" Width="30" HorizontalAlignment="Left" Margin="10,10,0,0" Height="30" Tapped="addImage_Tapped" Grid.Row="2" Grid.Column="0"/>
+                </Grid>
+                
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel x:Name="SearchPanel" VerticalAlignment="Bottom" Grid.Row="3">
+            <Border BorderBrush="Black" BorderThickness="2" Width="100" HorizontalAlignment="Right" Margin="0,0,10,10">
+                <TextBlock x:Name="Searchblck" Text="Search" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,10" Tapped="Searchblck_Tapped" />
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

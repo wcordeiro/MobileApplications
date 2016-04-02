@@ -100,6 +100,9 @@
     </Compile>
     <Compile Include="Bussiness\Recipef2f.cs" />
     <Compile Include="Bussiness\Responsef2f.cs" />
+    <Compile Include="IngredientsSearch.xaml.cs">
+      <DependentUpon>IngredientsSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,7 @@
     <None Include="FinalProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\add.jpg" />
     <Content Include="Images\info.png" />
     <Content Include="Images\powered.png" />
     <Content Include="Images\settings.png" />
@@ -136,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="IngredientsSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

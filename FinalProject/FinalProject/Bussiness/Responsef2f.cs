@@ -18,8 +18,21 @@ namespace FinalProject.Bussiness
         private const String recipesKey = "recipes";
 
         private const String appKey = "c8c358aba94fa326ea40fcc2c6731591";
-        private String stringUri = "http://food2fork.com/api/search?key="+appKey+"&page=";
+        private String stringUri = "http://food2fork.com/api/search?key="+appKey;
         private FinalProject.Model.Responsef2f responseModel;
+
+        public string StringUri
+        {
+            get
+            {
+                return stringUri;
+            }
+
+            set
+            {
+                stringUri = value;
+            }
+        }
 
         public Responsef2f()
         {
@@ -52,7 +65,7 @@ namespace FinalProject.Bussiness
         public async Task<String> getData(int page)
         {
             var httpClient = new HttpClient();
-            var uri = new Uri(stringUri+page.ToString());
+            var uri = new Uri(StringUri+"&page="+page.ToString());
 
             HttpResponseMessage result = await httpClient.GetAsync(uri);
 

@@ -41,7 +41,7 @@ namespace FinalProject
 
         private void Ingredientstxtblck_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(IngredientsSearch));
         }
 
         private void Moretxtblck_Tapped(object sender, TappedRoutedEventArgs e)
