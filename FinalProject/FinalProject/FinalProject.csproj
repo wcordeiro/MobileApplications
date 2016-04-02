@@ -92,19 +92,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="curl\cacert.pem" />
-    <None Include="curl\certificado.crt" />
-    <None Include="curl\CHANGES" />
-    <None Include="curl\COPYING" />
-    <None Include="curl\curl.pdf" />
-    <None Include="curl\README" />
-    <None Include="curl\RELEASE-NOTES" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bussiness\Recipef2f.cs" />
     <Compile Include="Bussiness\Responsef2f.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -124,16 +118,10 @@
     <None Include="FinalProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="curl\build.txt" />
-    <Content Include="curl\curl.exe" />
-    <Content Include="curl\curl.html" />
-    <Content Include="curl\libcurl.dll" />
-    <Content Include="curl\libeay32.dll" />
-    <Content Include="curl\mk-ca-bundle.vbs" />
-    <Content Include="curl\ssleay32.dll" />
     <Content Include="Images\info.png" />
     <Content Include="Images\powered.png" />
     <Content Include="Images\settings.png" />
+    <Content Include="Images\splash200.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

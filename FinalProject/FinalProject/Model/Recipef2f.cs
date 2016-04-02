@@ -10,13 +10,13 @@ namespace FinalProject.Model
     {
         private String imageUrl; // URL of the image
         private String sourceUrl; // Original Url of the recipe on the publisher's site
-        private int recipeId; // Id used for follow-up request
+        private String recipeId; // Id used for follow-up request
         private String f2fUrl; // Url of the recipe on Food2Fork.com
         private String title; // Title of the recipe
         private String publisher; // Name of the Publisher
         private String publisherUrl; // Base url of the publisher
-        private String socialRank; // The Social Ranking of the Recipe (As determined by f2f Ranking Algorithm)
-        private int page; // The page number that is being returned (To keep track of concurrent requests)
+        private Double socialRank; // The Social Ranking of the Recipe (As determined by f2f Ranking Algorithm)
+        private String ingredientsList; // The page number that is being returned (To keep track of concurrent requests)
 
         public string ImageUrl
         {
@@ -41,19 +41,6 @@ namespace FinalProject.Model
             set
             {
                 sourceUrl = value;
-            }
-        }
-
-        public int RecipeId
-        {
-            get
-            {
-                return recipeId;
-            }
-
-            set
-            {
-                recipeId = value;
             }
         }
 
@@ -109,7 +96,7 @@ namespace FinalProject.Model
             }
         }
 
-        public string SocialRank
+        public Double SocialRank
         {
             get
             {
@@ -122,16 +109,29 @@ namespace FinalProject.Model
             }
         }
 
-        public int Page
+        public string IngredientsList
         {
             get
             {
-                return page;
+                return ingredientsList;
             }
 
             set
             {
-                page = value;
+                ingredientsList = value;
+            }
+        }
+
+        public String RecipeId
+        {
+            get
+            {
+                return recipeId;
+            }
+
+            set
+            {
+                recipeId = value;
             }
         }
     }

@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot x:Name="pvtRecipes" SelectionChanged="pvtRecipes_SelectionChanged">
             <Pivot.Title>
-                <TextBlock Text="The Planets" Style="{StaticResource TitleTextBlockStyle}" />
+                <TextBlock Text="Recipes" Style="{StaticResource TitleTextBlockStyle}" />
             </Pivot.Title>
         </Pivot>
     </Grid>

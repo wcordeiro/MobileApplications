@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FinalProject.Bussiness;
+using Windows.ApplicationModel.Activation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -51,8 +52,18 @@ namespace FinalProject
         private async void Recipiestxtblck_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Responsef2f response = new Responsef2f();
-            String responseString = await response.getData();
-            Frame.Navigate(typeof(ShowRecipies),responseString);
+            Bussiness.Recipef2f responseRecipe = new Bussiness.Recipef2f();
+            String responseString = await response.getData(1);
+            List<Model.ResponseRecipef2f> recipeList;
+            List<Model.Recipef2f> recipeFinalList = new List<Model.Recipef2f>();
+            recipeList = response.parseResponse(responseString);
+            foreach (Model.ResponseRecipef2f recipe in recipeList)
+            {
+                Model.Recipef2f recipeModel = new Model.Recipef2f();
+                recipeModel = await responseRecipe.getRecipe(recipe.RecipeId);
+                recipeFinalList.Add(recipeModel);
+            }
+            Frame.Navigate(typeof(ShowRecipies), recipeFinalList);
         }
     }
 }
