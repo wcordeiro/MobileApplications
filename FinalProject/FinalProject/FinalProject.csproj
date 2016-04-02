@@ -95,11 +95,15 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvancedSearch.xaml.cs">
+      <DependentUpon>AdvancedSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bussiness\Recipef2f.cs" />
     <Compile Include="Bussiness\Responsef2f.cs" />
+    <Compile Include="Bussiness\ResponseYummly.cs" />
     <Compile Include="IngredientsSearch.xaml.cs">
       <DependentUpon>IngredientsSearch.xaml</DependentUpon>
     </Compile>
@@ -109,6 +113,7 @@
     <Compile Include="Model\Recipef2f.cs" />
     <Compile Include="Model\Responsef2f.cs" />
     <Compile Include="Model\ResponseRecipef2f.cs" />
+    <Compile Include="Model\ResponseYummly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowRecipies.xaml.cs">
       <DependentUpon>ShowRecipies.xaml</DependentUpon>
@@ -140,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AdvancedSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IngredientsSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

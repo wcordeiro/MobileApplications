@@ -1,0 +1,127 @@
+﻿<Page
+    x:Class="FinalProject.AdvancedSearch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="250" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="0">
+            <TextBlock Text="Advanced Search" FontSize="30"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+            <StackPanel x:Name="IngredientsPanel" Grid.Row="1" AllowDrop="True">
+                <Grid x:Name="IngredientsGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text=" Allowed Ingredients :" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0"/>
+                    <TextBlock Text=" Excluded Ingredients :" Margin="5,0,0,0" Grid.Row="0" Grid.Column="1"/>
+                    <TextBox x:Name="AIngredient0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox x:Name="EIngredient0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1"/>
+                    <Image x:Name="addImage" Source="Images/add.jpg" Width="30" HorizontalAlignment="Left" Margin="10,10,0,0" Height="30" Tapped="addImage_Tapped" Grid.Row="2" Grid.Column="0"/>
+                    <Image x:Name="addImageEx" Source="Images/add.jpg" Width="30" HorizontalAlignment="Right" Margin="10,10,0,0" Height="30" Tapped="addImageEx_Tapped" Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel x:Name="AdvancedPanel" Grid.Row="2">
+            <Grid x:Name="AdvancedGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel x:Name="CusineOptions" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Cusine"/>
+                    <CheckBox x:Name="cusine1" Grid.Row="1" Grid.Column="0" Margin="5,0,0,0" 
+                         Content="American"/>
+                    <CheckBox x:Name="cusine2" Grid.Row="2" Grid.Column="0" Margin="5,0,0,0" 
+                         Content="Italian"/>
+                    <CheckBox x:Name="cusine3" Grid.Row="3" Grid.Column="0" Margin="5,0,0,0" 
+                         Content="Irish"/>
+                    <CheckBox x:Name="cusine4" Grid.Row="4" Grid.Column="0" Margin="5,0,0,0" 
+                         Content="Greek"/>
+                    <CheckBox x:Name="cusine5" Grid.Row="5" Grid.Column="0" Margin="5,0,0,0" 
+                         Content="Portuguese"/>
+                    <CheckBox x:Name="cusine6" Grid.Row="6" Grid.Column="0" Margin="5,0,0,0" 
+                         Content="French"/>
+                </StackPanel>
+
+                <StackPanel x:Name="CousesOptions" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Course"/>
+                    <CheckBox x:Name="course1" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Main Dish"/>
+                    <CheckBox x:Name="course2" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Desserts"/>
+                    <CheckBox x:Name="course3" Grid.Row="3" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Breakfast and lunch"/>
+                    <CheckBox x:Name="course4" Grid.Row="4" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Lunch and Snacks"/>
+                    <CheckBox x:Name="course5" Grid.Row="5" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Beverages"/>
+                    <CheckBox x:Name="course6" Grid.Row="6" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Salads"/>
+                </StackPanel>
+
+                <StackPanel x:Name="AllergyOptions" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Allergy"/>
+                    <CheckBox x:Name="allergy1" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Dairy"/>
+                    <CheckBox x:Name="allergy2" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Gluten"/>
+                    <CheckBox x:Name="allergy3" Grid.Row="3" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Peanut"/>
+                    <CheckBox x:Name="allergy4" Grid.Row="4" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Egg"/>
+                </StackPanel>
+                <StackPanel x:Name="DietOptions" Grid.Column="3" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Diet"/>
+                    <CheckBox x:Name="diet1" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Vegan"/>
+                    <CheckBox x:Name="diet2" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Vegetarian"/>
+                    <CheckBox x:Name="diet3" Grid.Row="3" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Lacto Vegetarian"/>
+                    <CheckBox x:Name="diet4" Grid.Row="4" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Ovo vegetarian"/>
+                    <CheckBox x:Name="diet5" Grid.Row="5" Grid.Column="1" Margin="5,0,0,0" 
+                         Content="Pescetarian"/>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="SearchPanel" VerticalAlignment="Bottom" Grid.Row="4">
+            <Border BorderBrush="Black" BorderThickness="2" Width="100" HorizontalAlignment="Right" Margin="0,0,10,10">
+                <TextBlock x:Name="Searchblck" Text="Search" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,10" Tapped="Searchblck_Tapped" />
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

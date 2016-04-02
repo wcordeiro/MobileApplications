@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FinalProject.Bussiness;
 using Windows.ApplicationModel.Activation;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,6 +25,7 @@ namespace FinalProject
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -46,11 +48,12 @@ namespace FinalProject
 
         private void Moretxtblck_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(AdvancedSearch));
         }
 
         private async void Recipiestxtblck_Tapped(object sender, TappedRoutedEventArgs e)
         {
+
             Responsef2f response = new Responsef2f();
             Bussiness.Recipef2f responseRecipe = new Bussiness.Recipef2f();
             String responseString = await response.getData(1);
