@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FinalProject.Bussiness;
 using FinalProject.Model;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,6 +38,29 @@ namespace FinalProject
             flagColumn = false;
             lastRow = 1;
             numIngredients = 0;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Frame.CanGoBack)
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += IngredientsSearch_BackRequested;
+        }
+
+        private void IngredientsSearch_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            // Navigate back if possible, and if the event has not 
+            // already been handled .
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
+
         }
 
         private void addImage_Tapped(object sender, TappedRoutedEventArgs e)

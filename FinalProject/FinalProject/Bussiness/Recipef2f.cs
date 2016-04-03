@@ -11,7 +11,7 @@ namespace FinalProject.Bussiness
 {
     class Recipef2f
     {
-        private const String appKey = "c8c358aba94fa326ea40fcc2c6731591";
+        private const String appKey = "323650dff17c671b1896e503d35ebcf2";
         private const String stringUri = "http://food2fork.com/api/get?key=" + appKey + "&rId=";
 
         public async Task<Model.Recipef2f> getRecipe(String recipeId)

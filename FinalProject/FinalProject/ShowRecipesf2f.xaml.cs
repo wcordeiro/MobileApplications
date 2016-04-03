@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using FinalProject.Bussiness;
 using FinalProject.Model;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,6 +34,7 @@ namespace FinalProject
         {
             this.InitializeComponent();    
             page = 1;
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -42,6 +44,25 @@ namespace FinalProject
                 recipeFinalList = (List<Model.Recipef2f>) e.Parameter;
             }
             this.populateRecipes();
+            if (Frame.CanGoBack)
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += ShowRecipies_BackRequested;
+        }
+
+        private void ShowRecipies_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            // Navigate back if possible, and if the event has not 
+            // already been handled .
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
+
         }
 
         private void populateRecipes()
@@ -60,6 +81,14 @@ namespace FinalProject
                 img.Source = new BitmapImage(new Uri(recipe.ImageUrl));
                 img.SetValue(Grid.ColumnProperty, 0);
                 grid.Children.Add(img);
+
+                Image favorite = new Image();
+                favorite.Source = new BitmapImage(new Uri("Images/favoriteunpressed.jpg",UriKind.Relative));
+                favorite.HorizontalAlignment = HorizontalAlignment.Right;
+                favorite.Width = 10;
+                favorite.Height = 10;
+                favorite.SetValue(Grid.ColumnProperty, 1);
+                grid.Children.Add(favorite);
 
                 StackPanel stk = new StackPanel();
                 stk.SetValue(Grid.ColumnProperty, 1);

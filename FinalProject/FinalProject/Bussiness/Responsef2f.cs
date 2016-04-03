@@ -17,7 +17,7 @@ namespace FinalProject.Bussiness
         private const String countKey = "count";
         private const String recipesKey = "recipes";
 
-        private const String appKey = "c8c358aba94fa326ea40fcc2c6731591";
+        private const String appKey = "323650dff17c671b1896e503d35ebcf2";
         private String stringUri = "http://food2fork.com/api/search?key="+appKey;
         private FinalProject.Model.Responsef2f responseModel;
 

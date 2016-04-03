@@ -9,17 +9,24 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="250" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="230" />
+            <RowDefinition Height="230" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="0">
             <TextBlock Text="Advanced Search" FontSize="30"/>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-            <StackPanel x:Name="IngredientsPanel" Grid.Row="1" AllowDrop="True">
+        <StackPanel x:Name="SearchDish" Grid.Row="1">
+            <TextBlock Text="Enter Dish to be Searched:" Margin="10,0,0,0"/>
+            <TextBox x:Name="DishtobeSearch" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+            <StackPanel x:Name="IngredientsPanel" Grid.Row="2" AllowDrop="True">
                 <Grid x:Name="IngredientsGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -41,7 +48,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <StackPanel x:Name="AdvancedPanel" Grid.Row="2">
+        <StackPanel x:Name="AdvancedPanel" Grid.Row="3">
             <Grid x:Name="AdvancedGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -74,14 +81,14 @@
                          Content="French"/>
                 </StackPanel>
 
-                <StackPanel x:Name="CousesOptions" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                <StackPanel x:Name="CoursesOptions" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
                     <TextBlock Text="Course"/>
                     <CheckBox x:Name="course1" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" 
                          Content="Main Dish"/>
                     <CheckBox x:Name="course2" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" 
                          Content="Desserts"/>
                     <CheckBox x:Name="course3" Grid.Row="3" Grid.Column="1" Margin="5,0,0,0" 
-                         Content="Breakfast and lunch"/>
+                         Content="Breakfast and Brunch"/>
                     <CheckBox x:Name="course4" Grid.Row="4" Grid.Column="1" Margin="5,0,0,0" 
                          Content="Lunch and Snacks"/>
                     <CheckBox x:Name="course5" Grid.Row="5" Grid.Column="1" Margin="5,0,0,0" 
@@ -118,7 +125,73 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel x:Name="SearchPanel" VerticalAlignment="Bottom" Grid.Row="4">
+        <StackPanel x:Name="FlavourPanel" Grid.Row="4">
+            <TextBlock Text="Flavour Selection"/>
+            <Grid x:Name="FlavourGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel x:Name="SweetPanel" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Sweet" Grid.Column="0"/>
+                    <RadioButton x:Name="sweet1" Content="0 - 0.2"/>
+                    <RadioButton x:Name="sweet2" Content="0.2 - 0.4"/>
+                    <RadioButton x:Name="sweet3" Content="0.4 - 0.6"/>
+                    <RadioButton x:Name="sweet4" Content="0.6 - 0.8"/>
+                    <RadioButton x:Name="sweet5" Content="0.8 - 1.0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="MeatyPanel" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Meaty" Grid.Column="0"/>
+                    <RadioButton x:Name="meaty1" Content="0 - 0.2"/>
+                    <RadioButton x:Name="meaty2" Content="0.2 - 0.4"/>
+                    <RadioButton x:Name="meaty3" Content="0.4 - 0.6"/>
+                    <RadioButton x:Name="meaty4" Content="0.6 - 0.8"/>
+                    <RadioButton x:Name="meaty5" Content="0.8 - 1.0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="SourPanel" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Sour" Grid.Column="0"/>
+                    <RadioButton x:Name="sour1" Content="0 - 0.2"/>
+                    <RadioButton x:Name="sour2" Content="0.2 - 0.4"/>
+                    <RadioButton x:Name="sour3" Content="0.4 - 0.6"/>
+                    <RadioButton x:Name="sour4" Content="0.6 - 0.8"/>
+                    <RadioButton x:Name="sour5" Content="0.8 - 1.0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="BitterPanel" Grid.Column="3" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Bitter" Grid.Column="0"/>
+                    <RadioButton x:Name="bitter1" Content="0 - 0.2"/>
+                    <RadioButton x:Name="bitter2" Content="0.2 - 0.4"/>
+                    <RadioButton x:Name="bitter3" Content="0.4 - 0.6"/>
+                    <RadioButton x:Name="bitter4" Content="0.6 - 0.8"/>
+                    <RadioButton x:Name="bitter5" Content="0.8 - 1.0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="PiquantPanel" Grid.Column="4" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="Piquant" Grid.Column="0"/>
+                    <RadioButton x:Name="piquant1" Content="0 - 0.2"/>
+                    <RadioButton x:Name="piquant2" Content="0.2 - 0.4"/>
+                    <RadioButton x:Name="piquant3" Content="0.4 - 0.6"/>
+                    <RadioButton x:Name="piquant4" Content="0.6 - 0.8"/>
+                    <RadioButton x:Name="piquant5" Content="0.8 - 1.0"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="SearchPanel" VerticalAlignment="Bottom" Grid.Row="5">
             <Border BorderBrush="Black" BorderThickness="2" Width="100" HorizontalAlignment="Right" Margin="0,0,10,10">
                 <TextBlock x:Name="Searchblck" Text="Search" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,10" Tapped="Searchblck_Tapped" />
             </Border>
