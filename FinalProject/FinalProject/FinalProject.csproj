@@ -104,6 +104,9 @@
     <Compile Include="Bussiness\Recipef2f.cs" />
     <Compile Include="Bussiness\Responsef2f.cs" />
     <Compile Include="Bussiness\ResponseYummly.cs" />
+    <Compile Include="InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IngredientsSearch.xaml.cs">
       <DependentUpon>IngredientsSearch.xaml</DependentUpon>
     </Compile>
@@ -132,13 +135,16 @@
     <None Include="FinalProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Images\add.jpg" />
+    <Content Include="Images\f2f.jpg" />
     <Content Include="Images\favoriteunpressed.jpg" />
     <Content Include="Images\favoritepressed.jpg" />
     <Content Include="Images\info.png" />
     <Content Include="Images\powered.png" />
     <Content Include="Images\settings.png" />
     <Content Include="Images\splash200.png" />
+    <Content Include="Images\yummly.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,6 +160,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AdvancedSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

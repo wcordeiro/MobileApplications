@@ -25,7 +25,7 @@ namespace FinalProject.Bussiness
           //  httpClient.DefaultRequestHeaders.Add("Authorization", "X-Yummly-App-Key:" + appKey);
             HttpResponseMessage result = await httpClient.GetAsync(uri);
 
-            List<Model.ResponseYummly> listRecipes = new List<Model.ResponseYummly>();
+            List<Model.ResponseYummly> listRecipes =  new List<Model.ResponseYummly>();
 
             JsonObject jsonObject = JsonObject.Parse(result.Content.ToString());
 

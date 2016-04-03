@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="FinalProject.InfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot x:Name="pvtInfo">
+            <Pivot.Title>
+                <TextBlock Text="Information" Style="{StaticResource TitleTextBlockStyle}" />
+            </Pivot.Title>
+            <PivotItem Header="About this App">
+                <StackPanel >
+                    <Image Source="Images/splash200.png" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" AllowDrop="True" TextWrapping="Wrap" Margin="10,0,0,0">
+                        The RecipeFinder App has the intent of help cookers
+                        in finding the best recipe possible.
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" AllowDrop="True" TextWrapping="Wrap" Margin="10,0,0,0">
+                        This app is powered by two APIs, Yummly and Food2Fork, and all the information
+                        on this app is acquired from those sources.
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" AllowDrop="True" TextWrapping="Wrap" Margin="10,0,0,0">
+                        The Recipe Finder App is capable of showing random recipes or search for specifics. 
+                    </TextBlock>
+                </StackPanel>
+            </PivotItem>
+
+            <PivotItem Header="Food2Fork">
+                <StackPanel >
+                    <Image Source="Images/f2f.jpg" HorizontalAlignment="Center" Height="200" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" AllowDrop="True" TextWrapping="Wrap" Margin="10,0,0,0">
+                        Food2Fork is an ever expanding recipe website. It strives to bring people closer by being able share your favorite meals and recipes with everyone around the world. 
+                        By combining ingredients and title search, Food2Fork makes finding recipes easy. 
+                        Food2Fork recipes are from everyday cooks and chefs that have perfected the recipe over time. 
+                        Food2Fork recipes range from the decadent to the simple for whatever mood you are in. 
+                        With recipes being added daily there will alway be something new for you to crave.
+                    </TextBlock>
+                </StackPanel>
+            </PivotItem>
+
+            <PivotItem Header="Yummly">
+                <StackPanel>
+                    <Image Source="Images/yummly.png" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" AllowDrop="True" TextWrapping="Wrap" Margin="10,0,0,0">
+                        Yummly was launched in 2010 by foodies on a mission to invent the ultimate kitchen tool. 
+                        Whether it’s finding a recipe or going to the store, Yummly wants to make it easier for foodies to do what they love – cook, eat, and share!
+                        Yummly’s mission is to be the largest, most powerful, and most helpful food site in the world.
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" AllowDrop="True" TextWrapping="Wrap" Margin="10,0,0,0">
+                         The Yummly Recipe API lets you integrate recipes and faceted recipe search into your websites or mobile applications.
+                        Since Yummly understands the recipe – ingredients, diets, allergies, nutrition, taste, techniques and more. 
+                        We can connect your users with the best recipes available for their unique food preferences.
+                    </TextBlock>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

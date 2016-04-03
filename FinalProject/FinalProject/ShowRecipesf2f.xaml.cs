@@ -196,7 +196,7 @@ namespace FinalProject
                 favoriteNumber = 0;
             } // end inner try for roaming settings
             Model.Recipef2f recipe = recipeFinalList[pvtRecipes.SelectedIndex];
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFolder storageFolder = ApplicationData.Current.RoamingFolder;
             StorageFile sampleFile;
             string fileText = "";
             try

@@ -90,6 +90,7 @@ namespace FinalProject
             query += this.getFlavours();
             ResponseYummly response = new ResponseYummly();
             List<Model.ResponseYummly> listRecipes = new List<Model.ResponseYummly>();
+            
             listRecipes = await response.getRecipes(query);
             Frame.Navigate(typeof(ShowRecipesYummly), listRecipes);
         }

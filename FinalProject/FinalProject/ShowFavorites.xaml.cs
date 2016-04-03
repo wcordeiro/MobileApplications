@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -40,7 +42,7 @@ namespace FinalProject
             this.populateRecipes();
             if (Frame.CanGoBack)
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            SystemNavigationManager.GetForCurrentView().BackRequested += ShowFavorites_BackRequested; ;
+            SystemNavigationManager.GetForCurrentView().BackRequested += ShowFavorites_BackRequested;
         }
 
         private void ShowFavorites_BackRequested(object sender, BackRequestedEventArgs e)
@@ -72,9 +74,13 @@ namespace FinalProject
                 pivotItem.Content = txtTitle;
                 pvtFavorites.Items.Add(pivotItem);
             }
+            int yummly = 0;
+            int i = 0;
             foreach (Model.ResponseYummly recipe in listRecipes)
             {
                 PivotItem pivotItem = new PivotItem();
+                pivotItem.Name = "yummly" + yummly.ToString();
+                yummly++;
                 pivotItem.Header = recipe.RecipeName;
 
                 Grid grid = new Grid();
@@ -86,9 +92,24 @@ namespace FinalProject
                 img.SetValue(Grid.ColumnProperty, 0);
                 grid.Children.Add(img);
 
+                Image favorite = new Image();
+                favorite.Name = "favoriteSymbol" + i.ToString();
+                i++;
+                BitmapImage starImage = new BitmapImage();
+                starImage.UriSource = new Uri("http://images.all-free-download.com/images/graphiclarge/favorite_icon_55521.jpg");
+                favorite.Source = starImage;
+                favorite.HorizontalAlignment = HorizontalAlignment.Right;
+                favorite.VerticalAlignment = VerticalAlignment.Top;
+                favorite.Width = 15;
+                favorite.Height = 15;
+                favorite.Tapped += Favorite_Tapped;
+                favorite.SetValue(Grid.ColumnProperty, 1);
+
                 StackPanel stk = new StackPanel();
                 stk.Name = "recipeStk";
                 stk.SetValue(Grid.ColumnProperty, 1);
+
+                stk.Children.Add(favorite);
 
                 TextBlock txtTitle = new TextBlock();
                 txtTitle.Text = "Title: " + recipe.RecipeName;
@@ -149,9 +170,12 @@ namespace FinalProject
                 pivotItem.Content = grid;
                 pvtFavorites.Items.Add(pivotItem);
             }
+            int f2f = 0;
             foreach (Model.Recipef2f recipe in listf2fRecipe)
             {
                 PivotItem pivotItem = new PivotItem();
+                pivotItem.Name = "f2f" + f2f.ToString();
+                f2f++;
                 pivotItem.Header = recipe.Title;
 
                 Grid grid = new Grid();
@@ -163,8 +187,23 @@ namespace FinalProject
                 img.SetValue(Grid.ColumnProperty, 0);
                 grid.Children.Add(img);
 
+                Image favorite = new Image();
+                favorite.Name = "favoriteSymbol" + i.ToString();
+                i++;
+                BitmapImage starImage = new BitmapImage();
+                starImage.UriSource = new Uri("http://images.all-free-download.com/images/graphiclarge/favorite_icon_55521.jpg");
+                favorite.Source = starImage;
+                favorite.HorizontalAlignment = HorizontalAlignment.Right;
+                favorite.VerticalAlignment = VerticalAlignment.Top;
+                favorite.Width = 15;
+                favorite.Height = 15;
+                favorite.Tapped += Favorite_Tapped;
+                favorite.SetValue(Grid.ColumnProperty, 1);
+
                 StackPanel stk = new StackPanel();
                 stk.SetValue(Grid.ColumnProperty, 1);
+
+                stk.Children.Add(favorite);
 
                 TextBlock txtTitle = new TextBlock();
                 txtTitle.Text = "Title: " + recipe.Title;
@@ -218,6 +257,31 @@ namespace FinalProject
 
                 pivotItem.Content = grid;
                 pvtFavorites.Items.Add(pivotItem);
+            }
+        }
+
+        private async void Favorite_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            PivotItem pivotItem = (PivotItem)pvtFavorites.SelectedItem;
+            pvtFavorites.Items.Remove(pivotItem);
+            pvtFavorites.UpdateLayout();
+           // pivotItem.Visibility = Visibility.Collapsed;
+            await this.deleteFavorite(pivotItem.Name.ToString());
+        }
+
+        private async Task deleteFavorite(string v)
+        {
+            StorageFolder storageFolder = ApplicationData.Current.RoamingFolder;
+            StorageFile sampleFile;
+            try
+            {
+                sampleFile = await storageFolder.GetFileAsync(v+".txt");
+                await sampleFile.DeleteAsync();
+
+            }
+            catch (Exception myE)
+            {
+                string message = myE.Message;
             }
         }
     }

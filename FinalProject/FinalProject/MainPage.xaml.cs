@@ -17,6 +17,8 @@ using Windows.ApplicationModel.Activation;
 using System.Diagnostics;
 using Windows.Storage;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -40,7 +42,7 @@ namespace FinalProject
 
         private void InfoImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(InfoPage));
         }
 
         private void Ingredientstxtblck_Tapped(object sender, TappedRoutedEventArgs e)
@@ -55,7 +57,7 @@ namespace FinalProject
 
         private async void Recipiestxtblck_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.loadingModal();
             Responsef2f response = new Responsef2f();
             Bussiness.Recipef2f responseRecipe = new Bussiness.Recipef2f();
             String responseString = await response.getData(1);
@@ -68,7 +70,26 @@ namespace FinalProject
                 recipeModel = await responseRecipe.getRecipe(recipe.RecipeId);
                 recipeFinalList.Add(recipeModel);
             }
+            this.ReloadScreen();
             Frame.Navigate(typeof(ShowRecipies), recipeFinalList);
+        }
+
+        private void ReloadScreen()
+        {
+            Recipiestxtblck.Visibility = Visibility.Visible;
+            OptionsPanel.Visibility = Visibility.Visible;
+            borderRecipestxt.Visibility = Visibility.Visible;
+            Loadingtxtblck.Visibility = Visibility.Collapsed;
+            this.UpdateLayout();
+        }
+
+        private void loadingModal()
+        {
+            Recipiestxtblck.Visibility = Visibility.Collapsed;
+            OptionsPanel.Visibility = Visibility.Collapsed;
+            borderRecipestxt.Visibility = Visibility.Collapsed;
+            Loadingtxtblck.Visibility = Visibility.Visible;
+            this.UpdateLayout();
         }
 
         private async void FavoriteImage_Tapped(object sender, TappedRoutedEventArgs e)
@@ -122,7 +143,7 @@ namespace FinalProject
 
         private async Task<int> readf2fFiles(int f2fFavorites)
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFolder storageFolder = ApplicationData.Current.RoamingFolder;
             // List<Model.ResponseYummly> listRecipe = new List<Model.ResponseYummly>();
 
             StorageFile sampleFile;
@@ -138,6 +159,7 @@ namespace FinalProject
                 catch (Exception myE)
                 {
                     string message = myE.Message;
+                    continue;
                 }
                 Model.Recipef2f recipe = new Model.Recipef2f();
                 String[] tokens = fileText.Split('\n');
@@ -157,7 +179,7 @@ namespace FinalProject
 
         private async Task<int> readYummlyFiles(int yummlyFavorites)
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFolder storageFolder = ApplicationData.Current.RoamingFolder;
            // List<Model.ResponseYummly> listRecipe = new List<Model.ResponseYummly>();
             
             StorageFile sampleFile;
@@ -173,6 +195,7 @@ namespace FinalProject
                 catch (Exception myE)
                 {
                     string message = myE.Message;
+                    continue;
                 }
                 Model.ResponseYummly recipe = new Model.ResponseYummly();
                 String[] tokens = fileText.Split('\n');

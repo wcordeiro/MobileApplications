@@ -12,6 +12,11 @@
             <Pivot.Title>
                 <TextBlock Text="Recipes" Style="{StaticResource TitleTextBlockStyle}" />
             </Pivot.Title>
+            <PivotItem Header="Favorites">
+                <TextBlock>
+                    Swipe to see yours favorites.
+                </TextBlock>
+            </PivotItem>
         </Pivot>
     </Grid>
 </Page>
