@@ -9,8 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel x:Name="InfoConfigurationPanel" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Image x:Name="FavoriteImage" Source="http://images.all-free-download.com/images/graphiclarge/favorite_icon_55521.jpg" Width="25" Height="25" HorizontalAlignment="Right" Tapped="FavoriteImage_Tapped"/>
             <Image x:Name="InfoImage" Source="Images/info.png" Width="25" Height="25" HorizontalAlignment="Right" Tapped="InfoImage_Tapped" Margin="0,0,3,0"/>
-            <Image x:Name="SettingImage" Source="Images/settings.png" Width="25" Height="25" HorizontalAlignment="Right" Tapped="SettingImage_Tapped"/>
         </StackPanel>
 
         <StackPanel x:Name="AppNamePanel" Height="640" VerticalAlignment="Bottom">
