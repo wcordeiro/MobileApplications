@@ -37,6 +37,10 @@
             </StackPanel>
         </ScrollViewer>
 
+        <StackPanel x:Name="LoadingPanel" Grid.Row="1" AllowDrop="True" Visibility="Collapsed">
+            <TextBox x:Name="LoadingTxt" Text="Loading..." FontSize="24"/>
+        </StackPanel>
+
         <StackPanel x:Name="SearchPanel" VerticalAlignment="Bottom" Grid.Row="3">
             <Border BorderBrush="Black" BorderThickness="2" Width="100" HorizontalAlignment="Right" Margin="0,0,10,10">
                 <TextBlock x:Name="Searchblck" Text="Search" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,10" Tapped="Searchblck_Tapped" />

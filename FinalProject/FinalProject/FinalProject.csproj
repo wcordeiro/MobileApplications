@@ -92,6 +92,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Documents\Documentation.docx" />
+    <None Include="Documents\Documentation.pdf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

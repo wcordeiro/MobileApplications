@@ -71,6 +71,16 @@ namespace FinalProject
         {
             // PivotItem pvt;
             int i = 0;
+            if(recipeFinalList.Count == 0)
+            {
+                PivotItem pivotItem = new PivotItem();
+                pivotItem.Header = "No Results";
+                TextBlock txtTitle = new TextBlock();
+                txtTitle.Text = "No Results Found";
+                txtTitle.Margin = new Thickness(10, 10, 10, 10);
+                pivotItem.Content = txtTitle;
+                pvtRecipes.Items.Add(pivotItem);
+            }
             foreach(Model.Recipef2f recipe in recipeFinalList)
             {
                 PivotItem pivotItem = new PivotItem();

@@ -111,6 +111,7 @@ namespace FinalProject
                         query += myTextBox.Text + ",";
                 }
             }
+            this.loadingModal();
             Bussiness.Responsef2f response = new Bussiness.Responsef2f();
             response.StringUri = response.StringUri + query;
             Bussiness.Recipef2f responseRecipe = new Bussiness.Recipef2f();
@@ -124,8 +125,22 @@ namespace FinalProject
                 recipeModel = await responseRecipe.getRecipe(recipe.RecipeId);
                 recipeFinalList.Add(recipeModel);
             }
+            this.reloadScreen();
             Frame.Navigate(typeof(ShowRecipies), recipeFinalList);
         }
 
+        private void reloadScreen()
+        {
+            LoadingPanel.Visibility = Visibility.Collapsed;
+            IngredientsPanel.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+        }
+
+        private void loadingModal()
+        {
+            LoadingPanel.Visibility = Visibility.Visible;
+            IngredientsPanel.Visibility = Visibility.Collapsed;
+            this.UpdateLayout();
+        }
     }
 }

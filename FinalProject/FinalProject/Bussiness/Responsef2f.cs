@@ -17,7 +17,7 @@ namespace FinalProject.Bussiness
         private const String countKey = "count";
         private const String recipesKey = "recipes";
 
-        private const String appKey = "323650dff17c671b1896e503d35ebcf2";
+        private const String appKey = "c8c358aba94fa326ea40fcc2c6731591";
         private String stringUri = "http://food2fork.com/api/search?key="+appKey;
         private FinalProject.Model.Responsef2f responseModel;
 
@@ -46,17 +46,23 @@ namespace FinalProject.Bussiness
             List<ResponseRecipef2f> recipeList = new List<ResponseRecipef2f>();
             foreach (IJsonValue jsonValues in jsonObject.GetNamedArray(recipesKey, new JsonArray()))
             {
-                JsonObject jsonValue = JsonObject.Parse(jsonValues.ToString());
-                ResponseRecipef2f recipe = new ResponseRecipef2f();
-                recipe.Publisher = jsonValue.GetNamedString("publisher", "");
-                recipe.F2fUrl = jsonValue.GetNamedString("f2f_url", "");
-                recipe.Title = jsonValue.GetNamedString("title", "");
-                recipe.SourceUrl = jsonValue.GetNamedString("source_url", "");
-                recipe.RecipeId = jsonValue.GetNamedString("recipe_id", "");
-                recipe.ImageUrl = jsonValue.GetNamedString("image_url", "");
-                recipe.SocialRank = jsonValue.GetNamedNumber("social_rank", 0);
-                recipe.PublisherUrl = jsonValue.GetNamedString("publisher_url", "");
-                recipeList.Add(recipe);
+                try {
+                    JsonObject jsonValue = JsonObject.Parse(jsonValues.ToString());
+                    ResponseRecipef2f recipe = new ResponseRecipef2f();
+                    recipe.Publisher = jsonValue.GetNamedString("publisher", "");
+                    recipe.F2fUrl = jsonValue.GetNamedString("f2f_url", "");
+                    recipe.Title = jsonValue.GetNamedString("title", "");
+                    recipe.SourceUrl = jsonValue.GetNamedString("source_url", "");
+                    recipe.RecipeId = jsonValue.GetNamedString("recipe_id", "");
+                    recipe.ImageUrl = jsonValue.GetNamedString("image_url", "");
+                    recipe.SocialRank = jsonValue.GetNamedNumber("social_rank", 0);
+                    recipe.PublisherUrl = jsonValue.GetNamedString("publisher_url", "");
+                    recipeList.Add(recipe);
+                }
+                catch
+                {
+                    continue;
+                }
             }
             responseModel.Recipe = recipeList;
             return recipeList;

@@ -28,32 +28,37 @@ namespace FinalProject.Bussiness
             List<Model.ResponseYummly> listRecipes =  new List<Model.ResponseYummly>();
 
             JsonObject jsonObject = JsonObject.Parse(result.Content.ToString());
-
             foreach(IJsonValue jsonValue in jsonObject.GetNamedArray("matches", new JsonArray()))
             {
-                JsonObject jsonRecipe = JsonObject.Parse(jsonValue.ToString());
-                Model.ResponseYummly recipe = new Model.ResponseYummly();
-                JsonObject jsonUrl = jsonRecipe.GetNamedObject("imageUrlsBySize", new JsonObject());
-                recipe.ImageUrl = jsonUrl.GetNamedString("90", "");
-                recipe.SourceDisplayName = jsonRecipe.GetNamedString("sourceDisplayName", "");
-                JsonArray ingredientsArray = jsonRecipe.GetNamedArray("ingredients", new JsonArray());
-                recipe.Ingredients = ingredientsArray.ToString();
-                recipe.Id = jsonRecipe.GetNamedString("id", "");
-                recipe.RecipeName = jsonRecipe.GetNamedString("recipeName", "");
-                recipe.TotalTime = jsonRecipe.GetNamedNumber("totalTimeInSeconds", 0);
-                JsonObject jsonAttributes = jsonRecipe.GetNamedObject("attributes", new JsonObject());
-                JsonArray courseArray = jsonAttributes.GetNamedArray("course", new JsonArray());
-                recipe.Course = courseArray.ToString();
-                JsonArray cuisineArray = jsonAttributes.GetNamedArray("cuisine", new JsonArray());
-                recipe.Cuisine = cuisineArray.ToString();
-                IJsonValue value;
-                if (jsonRecipe.TryGetValue("flavors", out value))
-                {
-                   // JsonObject flavourObject = jsonRecipe.GetNamedObject("flavors", new JsonObject());
-                    recipe.Flavors = value.ToString();
+                try {
+                    JsonObject jsonRecipe = JsonObject.Parse(jsonValue.ToString());
+                    Model.ResponseYummly recipe = new Model.ResponseYummly();
+                    JsonObject jsonUrl = jsonRecipe.GetNamedObject("imageUrlsBySize", new JsonObject());
+                    recipe.ImageUrl = jsonUrl.GetNamedString("90", "");
+                    recipe.SourceDisplayName = jsonRecipe.GetNamedString("sourceDisplayName", "");
+                    JsonArray ingredientsArray = jsonRecipe.GetNamedArray("ingredients", new JsonArray());
+                    recipe.Ingredients = ingredientsArray.ToString();
+                    recipe.Id = jsonRecipe.GetNamedString("id", "");
+                    recipe.RecipeName = jsonRecipe.GetNamedString("recipeName", "");
+                    recipe.TotalTime = jsonRecipe.GetNamedNumber("totalTimeInSeconds", 0);
+                    JsonObject jsonAttributes = jsonRecipe.GetNamedObject("attributes", new JsonObject());
+                    JsonArray courseArray = jsonAttributes.GetNamedArray("course", new JsonArray());
+                    recipe.Course = courseArray.ToString();
+                    JsonArray cuisineArray = jsonAttributes.GetNamedArray("cuisine", new JsonArray());
+                    recipe.Cuisine = cuisineArray.ToString();
+                    IJsonValue value;
+                    if (jsonRecipe.TryGetValue("flavors", out value))
+                    {
+                        // JsonObject flavourObject = jsonRecipe.GetNamedObject("flavors", new JsonObject());
+                        recipe.Flavors = value.ToString();
+                    }
+                    recipe.Rating = jsonRecipe.GetNamedNumber("rating", 0);
+                    listRecipes.Add(recipe);
                 }
-                recipe.Rating = jsonRecipe.GetNamedNumber("rating", 0);
-                listRecipes.Add(recipe);
+                catch
+                {
+                    continue;
+                }
             }
 
             return listRecipes;
